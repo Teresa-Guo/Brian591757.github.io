@@ -63,7 +63,7 @@ function update () {
     if(status != 'running') return;
 
     this.physics.arcade.collide(player, platforms, effect);
-    this.physics.arcade.collide(player, [leftWall, rightWall]);
+    this.physics.arcade.collide(player, [leftWall, rightWall, rightWall2, leftWall2]);
     checkTouchCeiling(player);
     checkGameOver();
 
@@ -201,7 +201,7 @@ function setPlayerAnimate(player) {
 function updatePlatforms () {
     for(var i=0; i<platforms.length; i++) {
         var platform = platforms[i];
-        platform.body.position.y -= 4;
+        platform.body.position.y -= 3;
         if(platform.body.position.y <= -20) {
             platform.destroy();
             platforms.splice(i, 1);
