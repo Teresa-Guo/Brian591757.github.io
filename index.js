@@ -22,8 +22,8 @@ var distance = 0;
 var status = 'running';
 
 function preload () {
- //   game.load.baseURL = 'https://github.com/Brian591757/downstairs2.git/';
-    game.load.baseURL = 'https://wacamoto.github.io/NS-Shaft-Tutorial/assets/';
+    game.load.baseURL = 'https://Brian591757.github.io/assets/';
+    //game.load.baseURL = 'https://wacamoto.github.io/NS-Shaft-Tutorial/assets/';
     game.load.crossOrigin = 'anonymous';
     game.load.spritesheet('player', 'player.png', 32, 32);
     game.load.image('wall', 'wall.png');
