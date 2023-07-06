@@ -1,4 +1,4 @@
-var game = new Phaser.Game(800, 800, Phaser.AUTO, '',
+var game = new Phaser.Game(600, 600, Phaser.AUTO, '',
     { preload: preload, create: create, update: update });
 //https://hackmd.io/@NrgG4-TCS42pma6IfQW84A/rkR_9r4Qe?type=slide#/1
 var player;
@@ -82,10 +82,10 @@ function createBounders () {
     leftWall.body.immovable = true;
     leftWall2.body.immovable = true;
 
-    rightWall = game.add.sprite(783, 0, 'wall');
+    rightWall = game.add.sprite(583, 0, 'wall');
     game.physics.arcade.enable(rightWall);
     rightWall.body.immovable = true;
-   rightWall2 = game.add.sprite(783, 400, 'wall');
+   rightWall2 = game.add.sprite(583, 400, 'wall');
     game.physics.arcade.enable(rightWall2);
     rightWall2.body.immovable = true;
 
@@ -94,19 +94,27 @@ function createBounders () {
 }
 
 var lastTime = 0;
-function createPlatforms () {
-    if(game.time.now > lastTime + 300) {
+var startfloor = 0
+function createPlatforms() {
+    if (lastTime == 0) {
         lastTime = game.time.now;
-        createOnePlatform();
+        createOnePlatform(450);
+        createOnePlatform(550);
+        distance += 1;
+    }
+    if(game.time.now > lastTime + 400) {
+        lastTime = game.time.now;
+        createOnePlatform(600);
         distance += 1;
     }
 }
 
-function createOnePlatform () {
+
+function createOnePlatform (h) {
 
     var platform;
-    var x = Math.random()*(800 - 96 - 40) + 20;
-    var y = 800;
+    var x = Math.random()*(600 - 96 - 40) + 20;
+    var y = h;
     var rand = Math.random() * 100;
 
     if(rand < 30) {
@@ -142,7 +150,7 @@ function createOnePlatform () {
 }
 
 function createPlayer() {
-    player = game.add.sprite(400, 50, 'player');
+    player = game.add.sprite(300, 50, 'player');
     game.physics.arcade.enable(player);
     player.body.gravity.y = 300;
     player.animations.add('left', [0, 1, 2, 3], 8);
@@ -159,7 +167,7 @@ function createTextsBoard () {
     var style = {fill: '#ff0000', fontSize: '20px'}
     text1 = game.add.text(10, 10, '', style);
     text2 = game.add.text(750, 10, '', style);
-    text3 = game.add.text(320, 350, 'Enter 重新開始', style);
+    text3 = game.add.text(220, 280, 'Enter 重新開始', style);
     text3.visible = false;
 }
 
@@ -289,7 +297,7 @@ function checkTouchCeiling(player) {
 }
 
 function checkGameOver () {
-    if(player.life <= 0 || player.body.y > 800) {
+    if(player.life <= 0 || player.body.y > 600) {
         gameOver();
     }
 }
