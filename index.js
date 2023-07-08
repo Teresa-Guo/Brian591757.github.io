@@ -96,11 +96,12 @@ function createBounders () {
 var lastTime = 0;
 var startfloor = 0
 function createPlatforms() {
+ //   console.log(game.time)
     if (lastTime == 0) {
         lastTime = game.time.now;
         createOnePlatform(450);
         createOnePlatform(550);
-        distance += 1;
+      
     }
     if(game.time.now > lastTime + 400) {
         lastTime = game.time.now;
@@ -166,7 +167,7 @@ function createPlayer() {
 function createTextsBoard () {
     var style = {fill: '#ff0000', fontSize: '20px'}
     text1 = game.add.text(10, 10, '', style);
-    text2 = game.add.text(750, 10, '', style);
+    text2 = game.add.text(550, 10, '', style);
     text3 = game.add.text(220, 280, 'Enter 重新開始', style);
     text3.visible = false;
 }
@@ -253,7 +254,7 @@ function conveyorLeftEffect(player, platform) {
 
 function trampolineEffect(player, platform) {
     platform.animations.play('jump');
-    player.body.velocity.y = -350;
+    player.body.velocity.y = -300;
 }
 
 function nailsEffect(player, platform) {
