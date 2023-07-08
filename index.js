@@ -2,7 +2,7 @@ var game = new Phaser.Game(600, 600, Phaser.AUTO, '',
     { preload: preload, create: create, update: update });
 //https://hackmd.io/@NrgG4-TCS42pma6IfQW84A/rkR_9r4Qe?type=slide#/1
 var player;
-var keyboard;
+var keyboard;kokokoko
 
 var platforms = [];
 
